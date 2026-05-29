@@ -1,0 +1,67 @@
+export const BLAME_EVENTS = [
+  {
+    id: 1,
+    match: '🇩🇪 Germany vs 🇧🇷 Brazil',
+    scenario: 'Germany concede in the 94th minute from a corner. Season-ender.',
+    question: 'Who do you actually blame for this catastrophe?',
+    options: [
+      { id: 'a', text: 'The goalkeeper forgot to jump',                       emoji: '🧤' },
+      { id: 'b', text: 'Mercury was in retrograde',                           emoji: '🪐' },
+      { id: 'c', text: 'The kit was too tight',                               emoji: '👕' },
+      { id: 'd', text: 'VAR took a coffee break',                             emoji: '☕' },
+    ],
+    seed: { a: 312, b: 887, c: 156, d: 445 },
+  },
+  {
+    id: 2,
+    match: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs 🇵🇹 Portugal',
+    scenario: 'England lose on penalties. Again. Somehow. Still.',
+    question: 'The real reason England are out:',
+    options: [
+      { id: 'a', text: 'Hotel WiFi was 2Mbps and disrupted their mental prep', emoji: '📶' },
+      { id: 'b', text: 'Manager chose the wrong hotel pillow',                 emoji: '🛌' },
+      { id: 'c', text: 'The grass was too green. Distracting.',               emoji: '🌿' },
+      { id: 'd', text: 'Destiny. Pure cosmic punishment.',                    emoji: '🌌' },
+    ],
+    seed: { a: 234, b: 678, c: 89, d: 1203 },
+  },
+  {
+    id: 3,
+    match: '🇮🇹 Italy vs 🇭🇷 Croatia',
+    scenario: 'Star player skies a penalty into Row Z at a crucial moment.',
+    question: 'The ball left the stadium because:',
+    options: [
+      { id: 'a', text: 'Wrong boot. Completely fatal error.',                  emoji: '👟' },
+      { id: 'b', text: 'He sneezed at the exact moment of contact',           emoji: '🤧' },
+      { id: 'c', text: 'The ball was overinflated by a nervous ball boy',     emoji: '⚽' },
+      { id: 'd', text: 'He genuinely aimed for orbit and missed slightly',    emoji: '🚀' },
+    ],
+    seed: { a: 567, b: 823, c: 201, d: 432 },
+  },
+  {
+    id: 4,
+    match: '🇫🇷 France vs 🇦🇷 Argentina',
+    scenario: 'Mbappé scores but celebration causes a teammate injury.',
+    question: 'Best explanation for the celebration disaster:',
+    options: [
+      { id: 'a', text: 'They practiced the wrong routine all week',           emoji: '💃' },
+      { id: 'b', text: 'Nobody warned them about the wet grass',              emoji: '🌧️' },
+      { id: 'c', text: 'Pure chaos energy. No other explanation.',            emoji: '🔥' },
+      { id: 'd', text: 'The physio was finishing his lunch',                  emoji: '🥗' },
+    ],
+    seed: { a: 345, b: 234, c: 1876, d: 123 },
+  },
+  {
+    id: 5,
+    match: '🇨🇦 Canada vs 🇨🇭 Switzerland',
+    scenario: 'Ref awards controversial offside from 50 yards away. No VAR review.',
+    question: 'How did the referee make this call?',
+    options: [
+      { id: 'a', text: 'Contact lenses were the wrong prescription',          emoji: '👓' },
+      { id: 'b', text: 'Had a serious personal bet to settle',                emoji: '💰' },
+      { id: 'c', text: 'VAR monitor was streaming Netflix at the time',       emoji: '📺' },
+      { id: 'd', text: "He simply did not like the team's vibe",              emoji: '🫤' },
+    ],
+    seed: { a: 445, b: 765, c: 2341, d: 567 },
+  },
+]
