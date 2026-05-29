@@ -178,11 +178,11 @@ const africanTeams = [
   }
 ];
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    1. COUNTDOWN TIMER
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initCountdown() {
-  const kickoff = new Date('2026-06-11T20:00:00-05:00');
+  const kickoff = new Date('2026-06-11T20:00:00-05:00'); // 8pm WAT = 3pm ET
 
   function update() {
     const now = new Date();
@@ -219,9 +219,9 @@ function initCountdown() {
   setInterval(update, 1000);
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    2. PARTICLE CANVAS
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initParticles() {
   const canvas = document.getElementById('particles');
   if (!canvas) return;
@@ -268,9 +268,9 @@ function initParticles() {
   });
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    3. NAVIGATION
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initNav() {
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
@@ -287,6 +287,7 @@ function initNav() {
     });
   });
 
+  // Highlight active nav on scroll
   const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-link');
 
@@ -304,9 +305,9 @@ function initNav() {
   sections.forEach(s => observer.observe(s));
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    4. MATCH CENTER TABS
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initMatchCenterTabs() {
   document.querySelectorAll('.mctab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -320,9 +321,9 @@ function initMatchCenterTabs() {
   });
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    5. SCHEDULE FILTER
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initScheduleFilter() {
   document.querySelectorAll('.sf-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -341,9 +342,9 @@ function initScheduleFilter() {
   });
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    6. GROUP STANDINGS
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function renderGroup(groupKey) {
   const group = groups[groupKey];
   const panel = document.getElementById('standingsPanel');
@@ -420,9 +421,9 @@ function initStandings() {
   });
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    7. AFRICAN TEAMS GRID
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initAfricanGrid() {
   const grid = document.getElementById('africaGrid');
   if (!grid) return;
@@ -438,6 +439,7 @@ function initAfricanGrid() {
     </div>
   `).join('');
 
+  // Observe for animation
   const cards = grid.querySelectorAll('.africa-card');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -445,9 +447,9 @@ function initAfricanGrid() {
   cards.forEach(c => obs.observe(c));
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    8. SCROLL REVEAL
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initReveal() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -461,9 +463,9 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    9. FORMS
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initForms() {
   const predForm = document.getElementById('predForm');
   if (predForm) {
@@ -488,9 +490,9 @@ function initForms() {
   }
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-   10. LIVE BADGE
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+/* ════════════════════════════════════════════
+   10. LIVE BADGE (simulated — will be real during tournament)
+════════════════════════════════════════════ */
 function initLiveBadge() {
   const badge = document.getElementById('liveBadge');
   if (!badge) return;
@@ -501,9 +503,9 @@ function initLiveBadge() {
   }
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
    11. HERO TITLE ANIMATION
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 function initHeroAnimation() {
   const lines = document.querySelectorAll('.hero-title-line1, .hero-title-line2, .hero-title-line3');
   lines.forEach((line, i) => {
@@ -531,10 +533,28 @@ function initHeroAnimation() {
   }
 }
 
-/* ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/* ════════════════════════════════════════════
+   0. TICKER AUTO-UPDATE
+════════════════════════════════════════════ */
+function updateTicker() {
+  const kickoff = new Date('2026-06-11T20:00:00-05:00');
+  const now = new Date();
+  const diff = kickoff - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.querySelectorAll('.ticker-item').forEach(item => {
+    if (item.textContent.includes('TO KICKOFF')) {
+      item.textContent = diff > 0
+        ? `⚡ ${days} ${days === 1 ? 'DAY' : 'DAYS'} TO KICKOFF — MEXICO VS SOUTH AFRICA — ESTADIO AZTECA — JUNE 11`
+        : `⚡ THE WORLD CUP IS LIVE — FOLLOW EVERY MATCH HERE`;
+    }
+  });
+}
+
+/* ════════════════════════════════════════════
    INIT ALL
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ */
+════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
+  updateTicker();
   initCountdown();
   initParticles();
   initNav();
