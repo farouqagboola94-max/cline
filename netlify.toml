@@ -1,2 +1,9 @@
 [build]
-  publish = "wc2026-site"
+  base    = "wc2026-react"
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

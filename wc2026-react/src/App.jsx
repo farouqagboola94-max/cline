@@ -1,14 +1,15 @@
-import Navbar          from './components/Navbar'
-import Hero           from './components/Hero'
-import GiveawayZone   from './components/GiveawayZone'
-import DailyChallenge from './components/DailyChallenge'
-import HotTakes       from './components/HotTakes'
-import BanterWall     from './components/BanterWall'
-import BlameGame      from './components/BlameGame'
-import ShareAndWin    from './components/ShareAndWin'
+import Navbar           from './components/Navbar'
+import Hero             from './components/Hero'
+import MatchCenter      from './components/MatchCenter'
+import GiveawayZone     from './components/GiveawayZone'
+import DailyChallenge   from './components/DailyChallenge'
+import HotTakes         from './components/HotTakes'
+import BanterWall       from './components/BanterWall'
+import BlameGame        from './components/BlameGame'
+import ShareAndWin      from './components/ShareAndWin'
 import PredictionEngine from './components/PredictionEngine'
-import Leaderboard    from './components/Leaderboard'
-import Footer         from './components/Footer'
+import Leaderboard      from './components/Leaderboard'
+import Footer           from './components/Footer'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <MatchCenter />
         <GiveawayZone />
         <DailyChallenge />
         <HotTakes />
