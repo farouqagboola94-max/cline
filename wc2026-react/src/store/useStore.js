@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { INITIAL_LEADERBOARD } from '../data/leaderboard'
 import { BLAME_EVENTS } from '../data/blameEvents'
+import { HOT_TAKES } from '../data/hotTakes'
 
 const SEED_MESSAGES = [
   { id: 1,  user: 'LagosBaller_94',   flag: '🇳🇬', text: 'France lifting that trophy in July. Screenshot this.',                                              time: '2m ago',  reactions: { fire: 47,  skull: 12,  cry: 3  } },
@@ -27,6 +28,14 @@ function initBlameVotes() {
   return votes
 }
 
+function initHotTakeVotes() {
+  const votes = {}
+  HOT_TAKES.forEach((t) => { votes[t.id] = { a: t.seed.a, b: t.seed.b } })
+  return votes
+}
+
+const ENTRY_COUNTS = { banter: 1, blame: 1, prediction: 2, daily: 2, share: 3 }
+
 export const useStore = create(
   persist(
     (set, get) => ({
@@ -44,6 +53,7 @@ export const useStore = create(
           isNew: true,
         }
         set((s) => ({ messages: [msg, ...s.messages].slice(0, 50) }))
+        get().awardGiveawayTask('banter')
       },
 
       reactToMessage(id, reaction) {
@@ -58,7 +68,7 @@ export const useStore = create(
 
       // ── Blame Game ─────────────────────────────────────
       blameVotes: initBlameVotes(),
-      userVotes: {},
+      userVotes:  {},
 
       castVote(eventId, optionId) {
         const { userVotes } = get()
@@ -73,6 +83,7 @@ export const useStore = create(
             },
           },
         }))
+        get().awardGiveawayTask('blame')
       },
 
       // ── Predictions ────────────────────────────────────
@@ -85,18 +96,73 @@ export const useStore = create(
             [matchId]: { home: Number(home), away: Number(away), ts: Date.now() },
           },
         }))
+        get().awardGiveawayTask('prediction')
       },
 
       // ── Leaderboard ────────────────────────────────────
       leaderboard: INITIAL_LEADERBOARD,
+
+      // ── Giveaway ────────────────────────────────────────
+      giveawayEntries: 0,
+      completedTasks:  {},
+
+      awardGiveawayTask(task) {
+        const { completedTasks } = get()
+        if (completedTasks[task]) return
+        const count = ENTRY_COUNTS[task] ?? 1
+        set((s) => ({
+          completedTasks:  { ...s.completedTasks, [task]: true },
+          giveawayEntries: s.giveawayEntries + count,
+        }))
+      },
+
+      // ── Hot Takes ────────────────────────────────────────
+      hotTakeVotes: initHotTakeVotes(),
+      userHotTakes: {},
+
+      voteHotTake(takeId, choice) {
+        if (get().userHotTakes[takeId]) return
+        set((s) => ({
+          userHotTakes: { ...s.userHotTakes, [takeId]: choice },
+          hotTakeVotes: {
+            ...s.hotTakeVotes,
+            [takeId]: {
+              ...s.hotTakeVotes[takeId],
+              [choice]: (s.hotTakeVotes[takeId]?.[choice] ?? 0) + 1,
+            },
+          },
+        }))
+      },
+
+      // ── Daily Challenge ─────────────────────────────────
+      dailyChallengeDone:  false,
+      dailyChallengeEntry: null,
+      dailyStreak:         0,
+
+      submitDailyChallenge(home, away) {
+        if (get().dailyChallengeDone) return
+        set((s) => ({
+          dailyChallengeDone:  true,
+          dailyChallengeEntry: { home: Number(home), away: Number(away), ts: Date.now() },
+          dailyStreak:         s.dailyStreak + 1,
+        }))
+        get().awardGiveawayTask('daily')
+      },
     }),
     {
       name: 'wc2026-store',
       partialize: (state) => ({
-        userVotes:   state.userVotes,
-        blameVotes:  state.blameVotes,
-        predictions: state.predictions,
-        messages:    state.messages,
+        userVotes:           state.userVotes,
+        blameVotes:          state.blameVotes,
+        predictions:         state.predictions,
+        messages:            state.messages,
+        completedTasks:      state.completedTasks,
+        giveawayEntries:     state.giveawayEntries,
+        userHotTakes:        state.userHotTakes,
+        hotTakeVotes:        state.hotTakeVotes,
+        dailyChallengeDone:  state.dailyChallengeDone,
+        dailyChallengeEntry: state.dailyChallengeEntry,
+        dailyStreak:         state.dailyStreak,
       }),
     }
   )
